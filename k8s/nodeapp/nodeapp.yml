@@ -16,7 +16,7 @@ specs:
     specs:
       containers:
         - name: nodeapp
-          image: mongo:5.0
+          image: khantki/simple-todo-app:main
           ports:
           - containerPort: 3000
 ---

@@ -22,11 +22,13 @@ const Todo = mongoose.model("todos", todoSchema);
 
 (async () => {
   mongoose.set("strictQuery", false);
-  await mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(
+    `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_URL}`
+  );
 
   const app = express();
 
-  app.use(express.json())
+  app.use(express.json());
 
   app.get("/todo", async (req, res) => {
     res.json(await Todo.find().exec());
